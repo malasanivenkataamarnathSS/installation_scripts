@@ -6,10 +6,13 @@ sudo apt upgrade -y
 
 sudo apt install openjdk-17-jre -y
 
-curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \
-  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
-echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
-  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
-  /etc/apt/sources.list.d/jenkins.list > /dev/null
-sudo apt-get update -y 
-sudo apt-get install jenkins -y
+sudo apt install wget -y
+
+sudo wget https://get.jenkins.io/war-stable/2.387.3/jenkins.war
+
+sudo java -jar jenkins.war --httpPort=80
+
+# for example we stoped your ec2 instance at the time jenkins also stoped . at  the time we want to start jenkins 
+
+# java -jar jenkins.war --httpPort=80
+
